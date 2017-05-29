@@ -41,6 +41,7 @@ namespace Core { class OutputWindow; }
 namespace Utils { class OutputFormatter; }
 
 namespace ProjectExplorer {
+
 class Task;
 
 namespace Internal {
@@ -104,6 +105,8 @@ class CompileOutputSettingsPage final : public Core::IOptionsPage
 {
 public:
     CompileOutputSettingsPage();
+private:
+    Utils::OutputFormat m_stdErrContext;
 };
 
 } // namespace Internal

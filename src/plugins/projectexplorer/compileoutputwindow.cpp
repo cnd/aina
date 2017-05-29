@@ -195,7 +195,16 @@ void CompileOutputWindow::appendText(const QString &text, BuildStep::OutputForma
         fmt = Utils::StdOutFormat;
         break;
     case BuildStep::OutputFormat::Stderr:
-        fmt = Utils::StdErrFormat;
+        // context change check
+        if (text.toLower().contains("warning:"))
+            m_stdErrContext = Utils::StdWarningFormat;
+        else if (text.toLower().contains("error:"))
+            m_stdErrContext = Utils::StdErrFormat;
+        // set different color output depending on context
+        if (m_stdErrContext == Utils::StdWarningFormat)
+            fmt = Utils::StdWarningFormat;
+        else
+            fmt = Utils::StdErrFormat;
         break;
     case BuildStep::OutputFormat::NormalMessage:
         fmt = Utils::NormalMessageFormat;

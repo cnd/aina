@@ -43,6 +43,12 @@ namespace Utils { class OutputFormatter; }
 
 namespace ProjectExplorer {
 
+enum class StdErrContext
+{
+    Error,
+    Warning
+};
+
 class BuildManager;
 class Task;
 
@@ -106,6 +112,8 @@ class CompileOutputSettingsPage final : public Core::IOptionsPage
 {
 public:
     CompileOutputSettingsPage();
+private:
+    Utils::OutputFormat m_stdErrContext;
 };
 
 } // namespace Internal

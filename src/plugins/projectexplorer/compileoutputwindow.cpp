@@ -151,7 +151,8 @@ CompileOutputWindow::CompileOutputWindow(QAction *cancelBuildAction) :
     m_cancelBuildButton(new QToolButton),
     m_zoomInButton(new QToolButton),
     m_zoomOutButton(new QToolButton),
-    m_formatter(new Utils::OutputFormatter)
+    m_formatter(new Utils::OutputFormatter),
+    m_stdErrContext(Utils::StdWarningFormat)
 {
     Core::Context context(C_COMPILE_OUTPUT);
     m_outputWindow = new CompileOutputTextEdit(context);
@@ -263,7 +264,16 @@ void CompileOutputWindow::appendText(const QString &text, BuildStep::OutputForma
         fmt = Utils::StdOutFormat;
         break;
     case BuildStep::OutputFormat::Stderr:
-        fmt = Utils::StdErrFormat;
+        // context change check
+        if (text.toLower().contains("warning:"))
+            m_stdErrContext = Utils::StdWarningFormat;
+        else if (text.toLower().contains("error:"))
+            m_stdErrContext = Utils::StdErrFormat;
+        // set different color output depending on context
+        if (m_stdErrContext == Utils::StdWarningFormat)
+            fmt = Utils::StdWarningFormat;
+        else
+            fmt = Utils::StdErrFormat;
         break;
     case BuildStep::OutputFormat::NormalMessage:
         fmt = Utils::NormalMessageFormat;

@@ -35,6 +35,7 @@ enum OutputFormat
     DebugFormat,
     StdOutFormat,
     StdErrFormat,
+    StdWarningFormat,
     StdOutFormatSameLine,
     StdErrFormatSameLine,
     NumberOfFormats // Keep this entry last.

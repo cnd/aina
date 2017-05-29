@@ -145,6 +145,9 @@ void OutputFormatter::initFormats()
     d->formats[StdErrFormat].setForeground(theme->color(Theme::OutputPanes_StdErrTextColor));
     d->formats[StdErrFormatSameLine] = d->formats[StdErrFormat];
 
+    // StdWarningFormat
+    d->formats[StdWarningFormat].setForeground(theme->color(Theme::OutputPanes_WarningMessageTextColor));
+
     d->formats[DebugFormat].setForeground(theme->color(Theme::OutputPanes_DebugTextColor));
 
     setBoldFontEnabled(d->boldFontEnabled);

@@ -41,6 +41,12 @@ namespace Utils { class OutputFormatter; }
 
 namespace ProjectExplorer {
 
+enum class StdErrContext
+{
+    Error,
+    Warning
+};
+
 class BuildManager;
 class Task;
 
@@ -92,6 +98,7 @@ private:
     QToolButton *m_zoomInButton;
     QToolButton *m_zoomOutButton;
     Utils::OutputFormatter *m_formatter;
+    Utils::OutputFormat m_stdErrContext;
 };
 
 } // namespace Internal

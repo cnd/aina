@@ -41,6 +41,12 @@ namespace Utils { class AnsiEscapeCodeHandler; }
 
 namespace ProjectExplorer {
 
+enum class StdErrContext
+{
+    Error,
+    Warning
+};
+
 class BuildManager;
 class Task;
 
@@ -92,6 +98,7 @@ private:
     QToolButton *m_zoomInButton;
     QToolButton *m_zoomOutButton;
     Utils::AnsiEscapeCodeHandler *m_escapeCodeHandler;
+    StdErrContext m_stdErrContext;
 };
 
 } // namespace Internal

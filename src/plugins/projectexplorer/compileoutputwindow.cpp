@@ -151,7 +151,8 @@ CompileOutputWindow::CompileOutputWindow(QAction *cancelBuildAction) :
     m_cancelBuildButton(new QToolButton),
     m_zoomInButton(new QToolButton),
     m_zoomOutButton(new QToolButton),
-    m_escapeCodeHandler(new Utils::AnsiEscapeCodeHandler)
+    m_escapeCodeHandler(new Utils::AnsiEscapeCodeHandler),
+    m_stdErrContext(StdErrContext::Error)
 {
     Core::Context context(C_COMPILE_OUTPUT);
     m_outputWindow = new CompileOutputTextEdit(context);
@@ -265,7 +266,18 @@ void CompileOutputWindow::appendText(const QString &text, BuildStep::OutputForma
         textFormat.setFontWeight(QFont::Normal);
         break;
     case BuildStep::OutputFormat::Stderr:
-        textFormat.setForeground(theme->color(Theme::OutputPanes_ErrorMessageTextColor));
+        // context change check
+        if (text.toLower().contains("warning:"))
+            m_stdErrContext = StdErrContext::Warning;
+        else if (text.toLower().contains("error:"))
+            m_stdErrContext = StdErrContext::Error;
+
+        // set different color output depending on context
+        if (m_stdErrContext == StdErrContext::Warning)
+            textFormat.setForeground(theme->color(Theme::OutputPanes_TestWarnTextColor));
+        else
+            textFormat.setForeground(theme->color(Theme::OutputPanes_ErrorMessageTextColor));
+
         textFormat.setFontWeight(QFont::Normal);
         break;
     case BuildStep::OutputFormat::NormalMessage:

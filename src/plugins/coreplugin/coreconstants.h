@@ -98,6 +98,7 @@ const char TOGGLE_RIGHT_SIDEBAR[]  = "QtCreator.ToggleRightSidebar";
 const char CYCLE_MODE_SELECTOR_STYLE[] =
                                      "QtCreator.CycleModeSelectorStyle";
 const char TOGGLE_FULLSCREEN[]     = "QtCreator.ToggleFullScreen";
+const char TOGGLE_MENUBAR[]        = "QtCreator.ToggleMenuBar";
 const char THEMEOPTIONS[]          = "QtCreator.ThemeOptions";
 
 const char TR_SHOW_LEFT_SIDEBAR[]  = QT_TRANSLATE_NOOP("Core", "Show Left Sidebar");

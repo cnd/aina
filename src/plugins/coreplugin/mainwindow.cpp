@@ -657,6 +657,16 @@ void MainWindow::registerDefaultActions()
         cmd->setAttribute(Command::CA_UpdateText);
     mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
 
+    // Toggle Menubar Action
+    QAction *toggleMenuBar = new QAction(tr("Hide/Show Menu"), this);
+    toggleMenuBar->setEnabled(true);
+    toggleMenuBar->setCheckable(true);
+    cmd = ActionManager::registerAction(toggleMenuBar, Constants::TOGGLE_MENUBAR);
+    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+M")));
+    connect(toggleMenuBar, &QAction::triggered,
+            this, [this](bool notVisible) { this->menuBar()->setVisible(!notVisible); });
+    mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
+
     if (useMacShortcuts) {
         mwindow->addSeparator(Constants::G_WINDOW_SIZE);
 

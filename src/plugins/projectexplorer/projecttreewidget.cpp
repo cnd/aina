@@ -298,7 +298,15 @@ ProjectTreeWidget::ProjectTreeWidget(QWidget *parent) : QWidget(parent)
     connect(m_toggleSync, &QAbstractButton::clicked,
             this, &ProjectTreeWidget::toggleAutoSynchronization);
 
+    m_collapseAll = new QToolButton;
+    m_collapseAll->setIcon(Utils::Icons::COLLAPSE.icon());
+    m_collapseAll->setCheckable(false);
+    m_collapseAll->setToolTip(tr("Collapse"));
+    connect(m_collapseAll, &QAbstractButton::clicked,
+            this, &ProjectTreeWidget::collapseAll);
+
     setCurrentItem(ProjectTree::findCurrentNode());
+
     setAutoSynchronization(true);
 
     m_projectTreeWidgets << this;
@@ -383,6 +391,11 @@ Node *ProjectTreeWidget::nodeForFile(const FileName &fileName)
 QToolButton *ProjectTreeWidget::toggleSync()
 {
     return m_toggleSync;
+}
+
+QToolButton *ProjectTreeWidget::collapseButton()
+{
+    return m_collapseAll;
 }
 
 void ProjectTreeWidget::toggleAutoSynchronization()
@@ -585,7 +598,7 @@ NavigationView ProjectTreeWidgetFactory::createWidget()
     filterMenu->addAction(ptw->m_trimEmptyDirectoriesAction);
     filter->setMenu(filterMenu);
 
-    n.dockToolBarWidgets << filter << ptw->toggleSync();
+    n.dockToolBarWidgets << filter << ptw->toggleSync() << ptw->collapseButton();
     return n;
 }
 

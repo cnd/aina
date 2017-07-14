@@ -722,6 +722,7 @@ void MainWindow::registerDefaultActions()
     m_toggleModeSelectorAction = new QAction(tr("Show Mode Selector"), this);
     m_toggleModeSelectorAction->setCheckable(true);
     cmd = ActionManager::registerAction(m_toggleModeSelectorAction, Constants::TOGGLE_MODE_SELECTOR);
+    cmd->setDefaultKeySequence(QKeySequence("Alt+F12"));
     connect(m_toggleModeSelectorAction, &QAction::triggered,
             ModeManager::instance(), &ModeManager::setModeSelectorVisible);
     mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);

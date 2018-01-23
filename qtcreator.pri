@@ -8,7 +8,7 @@ QTCREATOR_DISPLAY_VERSION = 4.7.0-beta1
 QTCREATOR_COPYRIGHT_YEAR = 2018
 BINARY_ARTIFACTS_BRANCH = 4.6
 
-isEmpty(IDE_DISPLAY_NAME):           IDE_DISPLAY_NAME = Qt Creator
+isEmpty(IDE_DISPLAY_NAME):           IDE_DISPLAY_NAME = Aina The End
 isEmpty(IDE_ID):                     IDE_ID = qtcreator
 isEmpty(IDE_CASED_ID):               IDE_CASED_ID = QtCreator
 

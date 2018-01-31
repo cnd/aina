@@ -1708,6 +1708,10 @@ void BreakpointItem::insertSubBreakpoint(const BreakpointResponse &params)
 {
     QTC_ASSERT(params.id.isMinor(), return);
 
+    if (boolSetting(HideSubBreakpoints)) {
+        return;
+    }
+
     int minorPart = params.id.minorPart();
 
     LocationItem *l = findFirstLevelChild([minorPart](LocationItem *l) {
@@ -2057,6 +2061,16 @@ bool BreakHandler::contextMenuEvent(const ItemViewEvent &ev)
 
     menu->addSeparator();
     menu->addAction(action(UseToolTipsInBreakpointsView));
+    SavedAction* hideSubBreakpoints = action(HideSubBreakpoints);
+    connect(hideSubBreakpoints, &SavedAction::toggled, this, [this](bool doHide) {
+        rootItem()->forAllChildren([doHide](TreeItem* rootChild) {
+            //TODO: no idea how to show/hide :'(
+            if (doHide) {
+                rootChild->removeChildren();
+            }
+        });
+    });
+    menu->addAction(hideSubBreakpoints);
     if (currentEngine()->hasCapability(MemoryAddressCapability))
         menu->addAction(action(UseAddressInBreakpointsView));
     menu->addSeparator();

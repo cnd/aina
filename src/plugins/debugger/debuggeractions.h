@@ -98,6 +98,7 @@ enum DebuggerActionCode
     UseToolTipsInMainEditor,
     UseToolTipsInLocalsView,
     UseToolTipsInBreakpointsView,
+    HideSubBreakpoints,
     UseToolTipsInStackView,
     UseAddressInBreakpointsView,
     UseAddressInStackView,

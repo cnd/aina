@@ -50,6 +50,7 @@ SUBDIRS   = \
     baremetal \
     ios \
     beautifier \
+    minimap \
     modeleditor \
     winrt \
     updateinfo \

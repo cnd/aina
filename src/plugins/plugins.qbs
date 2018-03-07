@@ -44,6 +44,7 @@ Project {
         "languageclient/languageclient.qbs",
         "macros/macros.qbs",
         "mercurial/mercurial.qbs",
+        "minimap/minimap.qbs",
         "modeleditor/modeleditor.qbs",
         "nim/nim.qbs",
         "perforce/perforce.qbs",

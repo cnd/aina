@@ -48,6 +48,7 @@ Project {
         "macros/macros.qbs",
         "mcusupport/mcusupport.qbs",
         "mercurial/mercurial.qbs",
+        "minimap/minimap.qbs",
         "modeleditor/modeleditor.qbs",
         "nim/nim.qbs",
         "perforce/perforce.qbs",

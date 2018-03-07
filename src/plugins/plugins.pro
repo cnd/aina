@@ -49,6 +49,7 @@ SUBDIRS   = \
     baremetal \
     ios \
     beautifier \
+    minimap \
     modeleditor \
     qmakeandroidsupport \
     winrt \

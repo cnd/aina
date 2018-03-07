@@ -41,6 +41,7 @@ Project {
         "ios/ios.qbs",
         "macros/macros.qbs",
         "mercurial/mercurial.qbs",
+        "minimap/minimap.qbs",
         "modeleditor/modeleditor.qbs",
         "nim/nim.qbs",
         "perforce/perforce.qbs",

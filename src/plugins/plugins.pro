@@ -78,12 +78,6 @@ qtHaveModule(quick) {
     warning("QmlProfiler, PerfProfiler and CTF Visualizer plugins have been disabled since the Qt Quick module is not available.")
 }
 
-qtHaveModule(help) {
-    SUBDIRS += help
-} else {
-    warning("Help plugin has been disabled since the Qt Help module is not available.")
-}
-
 qtHaveModule(designercomponents_private) {
     SUBDIRS += designer
 } else {

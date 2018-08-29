@@ -95,40 +95,40 @@ namespace QtCreatorDiscordRichPresence {
 
                 const char *smallImageKey = "", *smallImageText;
                 if (mimeType == "text/x-c++hdr") { //C++ Header
-                    smallImageKey = "file-cpphdr";
+                    smallImageKey = "cpp";
                     smallImageText = "C++ Header";
                 } else if (mimeType == "text/x-c++src") { //C++ Source
-                    smallImageKey = "file-cppsrc";
+                    smallImageKey = "cpp";
                     smallImageText = "C++ Source";
                 } else if (mimeType == "text/x-chdr") { //C Header
-                    smallImageKey = "file-chdr";
+                    smallImageKey = "c";
                     smallImageText = "C Header";
                 } else if (mimeType == "text/x-csrc") { //C Source
-                    smallImageKey = "file-csrc";
+                    smallImageKey = "c";
                     smallImageText = "C Source";
                 } else if (mimeType == "application/vnd.qt.qmakeprofile" || mimeType == "application/vnd.qt.qmakeproincludefile") { //QMake Profile
-                    smallImageKey = "file-qtprj";
+                    smallImageKey = "manifest";
                     smallImageText = "QMake Project Profile";
                 } else if (mimeType == "application/x-designer") { //Designer
-                    smallImageKey = "file-qtui";
+                    smallImageKey = "manifest";
                     smallImageText = "Qt User Interface File";
                 } else if (mimeType == "application/vnd.qt.xml.resource") { //Qt Resource
-                    smallImageKey = "file-qtres";
+                    smallImageKey = "manifest";
                     smallImageText = "Qt Resource File";
                 } else if (mimeType == "application/x-desktop") { //Desktop File
-                    smallImageKey = "file-desktop";
+                    smallImageKey = "manifest";
                     smallImageText = "Desktop File";
                 } else if (mimeType == "application/json") { //JSON File
-                    smallImageKey = "file-json";
+                    smallImageKey = "json";
                     smallImageText = "JSON File";
                 } else if (mimeType == "text/plain") { //Text File
-                    smallImageKey = "file-txt";
+                    smallImageKey = "text";
                     smallImageText = "Plain Text";
                 } else if (mimeType == "application/xml") { //XML File
-                    smallImageKey = "file-xml";
+                    smallImageKey = "xml";
                     smallImageText = "XML";
                 } else if (mimeType == "text/html") { //HTML File
-                    smallImageKey = "file-html";
+                    smallImageKey = "html";
                     smallImageText = "HTML";
                 } else if (mimeType == "text/vnd.qtcreator.git.submit") { //Git commit window
 
@@ -138,9 +138,9 @@ namespace QtCreatorDiscordRichPresence {
                     presence.largeImageKey = "qtcreator-logo";
                     presence.largeImageText = "Working with Qt Creator";
                 } else {
-                    presence.largeImageKey = smallImageKey;
+                    presence.largeImageKey = "qtcreator-logo";
                     presence.largeImageText = smallImageText;
-                    presence.smallImageKey = "qtcreator-logo-small";
+                    presence.smallImageKey = smallImageKey;
                     presence.smallImageText = "Working with Qt Creator";
                 }
 

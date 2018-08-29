@@ -1,11 +1,9 @@
 {
     \"Name\" : \"drp\",
-    \"Version\" : \"0.0.1\",
-    \"CompatVersion\" : \"0.0.1\",
-    \"Vendor\" : \"theSuite\",
-    \"Copyright\" : \"(C) theSuite 2018\",
+    \"Version\" : \"0.0.2\",
+    \"CompatVersion\" : \"0.0.2\",
+    \"Copyright\" : \"(C) theSuite 2017, Cynede 2018\",
     \"License\" : \"GPL v3\",
     \"Description\" : \"Integrate Qt Creator with Discord Rich Presence\",
-    \"Url\" : \"http://www.mycompany.com\",
     $$dependencyList
 }

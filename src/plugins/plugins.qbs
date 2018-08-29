@@ -73,6 +73,7 @@ Project {
         "valgrind/valgrind.qbs",
         "vcsbase/vcsbase.qbs",
         "welcome/welcome.qbs",
-        "winrt/winrt.qbs"
+        "winrt/winrt.qbs",
+        "drp/drp.qbs"
     ].concat(project.additionalPlugins)
 }

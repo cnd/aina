@@ -61,7 +61,8 @@ SUBDIRS   = \
     cppcheck \
     compilationdatabaseprojectmanager \
     perfprofiler \
-    qmlpreview
+    qmlpreview \
+    drp
 
 qtHaveModule(serialport) {
     SUBDIRS += serialterminal

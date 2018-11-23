@@ -115,9 +115,9 @@ namespace QtCreatorDiscordRichPresence {
                     presence.largeImageText = "Sword Art Online";
                 } else {
                     presence.largeImageKey = "logo3";
-                    presence.largeImageText = smallImageText;
+                    presence.largeImageText = "Sword Art Online";
                     presence.smallImageKey = smallImageKey;
-                    presence.smallImageText = "Sword Art Online";
+                    presence.smallImageText = smallImageText;
                 }
 
                 ProjectExplorer::Project* current = ProjectExplorer::ProjectTree::currentProject();

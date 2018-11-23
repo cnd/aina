@@ -1,6 +1,8 @@
 #include "qtcreatordiscordrichpresenceplugin.h"
 #include "qtcreatordiscordrichpresenceconstants.h"
 
+#include <time.h>
+
 #include <coreplugin/icore.h>
 #include <coreplugin/icontext.h>
 #include <coreplugin/actionmanager/actionmanager.h>
@@ -31,8 +33,6 @@ QString getRandomAlphanumericString(int length) {
     return randomString;
 }
 
-//QAction* QtCreatorDiscordRichPresence::Internal::QtCreatorDiscordRichPresencePlugin::rpAction = QAction*();
-
 namespace QtCreatorDiscordRichPresence {
     namespace Internal {
 
@@ -59,25 +59,14 @@ namespace QtCreatorDiscordRichPresence {
             Q_UNUSED(arguments)
             Q_UNUSED(errorString)
 
-            /*rpAction = new QAction(tr("Disable Rich Presence"), this);
-            Core::Command *cmd = Core::ActionManager::registerAction(rpAction, Constants::ACTION_ID, Core::Context(Core::Constants::C_GLOBAL));
-            connect(rpAction, &QAction::triggered, [=] {
-
-            });
-
-            Core::ActionContainer *menu = Core::ActionManager::createMenu(Constants::MENU_ID);
-            menu->menu()->setTitle(tr("Discord Rich Presence"));
-            menu->addAction(cmd);
-            Core::ActionManager::actionContainer(Core::Constants::M_TOOLS)->addMenu(menu);*/
-
             //Register Discord Rich Presence
             initDiscord();
             DiscordRichPresence presence;
             memset(&presence, 0, sizeof(presence));
             presence.state = "Idle";
             presence.details = "Startup Screen";
-            presence.largeImageKey = "qtcreator-logo";
-            presence.largeImageText = "Working with Qt Creator";
+            presence.largeImageKey = "logo3";
+            presence.largeImageText = "Sword Art Online";
             presence.instance = 1;
             Discord_UpdatePresence(&presence);
 
@@ -95,7 +84,7 @@ namespace QtCreatorDiscordRichPresence {
 
                 const char *smallImageKey = "", *smallImageText;
                 if (mimeType == "text/x-c++hdr") { //C++ Header
-                    smallImageKey = "cpp";
+                    smallImageKey = "cpph";
                     smallImageText = "C++ Header";
                 } else if (mimeType == "text/x-c++src") { //C++ Source
                     smallImageKey = "cpp";
@@ -107,22 +96,22 @@ namespace QtCreatorDiscordRichPresence {
                     smallImageKey = "c";
                     smallImageText = "C Source";
                 } else if (mimeType == "application/vnd.qt.qmakeprofile" || mimeType == "application/vnd.qt.qmakeproincludefile") { //QMake Profile
-                    smallImageKey = "manifest";
+                    smallImageKey = "qt-logo";
                     smallImageText = "QMake Project Profile";
                 } else if (mimeType == "application/x-designer") { //Designer
-                    smallImageKey = "manifest";
+                    smallImageKey = "qt-logo";
                     smallImageText = "Qt User Interface File";
                 } else if (mimeType == "application/vnd.qt.xml.resource") { //Qt Resource
-                    smallImageKey = "manifest";
+                    smallImageKey = "qt-logo";
                     smallImageText = "Qt Resource File";
                 } else if (mimeType == "application/x-desktop") { //Desktop File
-                    smallImageKey = "manifest";
+                    smallImageKey = "qt-logo";
                     smallImageText = "Desktop File";
                 } else if (mimeType == "application/json") { //JSON File
                     smallImageKey = "json";
                     smallImageText = "JSON File";
                 } else if (mimeType == "text/plain") { //Text File
-                    smallImageKey = "text";
+                    smallImageKey = "manifest";
                     smallImageText = "Plain Text";
                 } else if (mimeType == "application/xml") { //XML File
                     smallImageKey = "xml";
@@ -135,26 +124,26 @@ namespace QtCreatorDiscordRichPresence {
                 }
 
                 if (smallImageKey != nullptr && smallImageKey[0] == '\0') {
-                    presence.largeImageKey = "qtcreator-logo";
-                    presence.largeImageText = "Working with Qt Creator";
+                    presence.largeImageKey = "logo2";
+                    presence.largeImageText = "Sword Art Online";
                 } else {
-                    presence.largeImageKey = "qtcreator-logo";
+                    presence.largeImageKey = "logo3";
                     presence.largeImageText = smallImageText;
                     presence.smallImageKey = smallImageKey;
-                    presence.smallImageText = "Working with Qt Creator";
+                    presence.smallImageText = "Sword Art Online";
                 }
 
                 ProjectExplorer::Project* current = ProjectExplorer::ProjectTree::currentProject();
                 char stateString[256];
                 if (current == nullptr) {
                     if (editor->isDesignModePreferred()) {
-                        sprintf(stateString, "Designing some UI");
+                        sprintf(stateString, "Designing UI");
                     } else {
-                        sprintf(stateString, "Editing a file");
+                        sprintf(stateString, "Editing");
                     }
                     oldProject = "";
                 } else {
-                    sprintf(stateString, "%s", current->displayName().prepend("Working on ").toUtf8().data());
+                    sprintf(stateString, "%s", current->displayName().prepend("Fighting with ").toUtf8().data());
 
                     if (oldProject != current->displayName()) {
                         oldProject = current->displayName();
@@ -175,7 +164,9 @@ namespace QtCreatorDiscordRichPresence {
                 sprintf(detailsString, "%s", editor->document()->filePath().fileName().toUtf8().data());
                 presence.details = detailsString;
 
-                presence.instance = 1;
+                static int64_t StartTime = time(0);
+                presence.startTimestamp = StartTime;
+
                 Discord_UpdatePresence(&presence);
             });
 
@@ -211,13 +202,11 @@ namespace QtCreatorDiscordRichPresence {
                 qDebug() << "Discord Disconnected!";
             };
             handlers.joinGame = [](const char* joinSecret) {
-                //QString secret = QByteArray::fromBase64(QByteArray(joinSecret));
                 QByteArray secretBytes(joinSecret);
                 QString secret = QString::fromStdString(secretBytes.toStdString());
                 QMessageBox::warning(nullptr, "Discord Join", QString("Discord Join Secret: ").append(secret), QMessageBox::Ok, QMessageBox::Ok);
-                //qDebug() << secret;
             };
-            Discord_Initialize("385624695229120519", &handlers, true, nullptr);
+            Discord_Initialize("515449634445852672", &handlers, true, nullptr);
         }
 
     } // namespace Internal

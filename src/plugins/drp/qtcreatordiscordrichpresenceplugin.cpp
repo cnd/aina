@@ -20,19 +20,6 @@
 #include <QMenu>
 #include <QDebug>
 
-QString getRandomAlphanumericString(int length) {
-    const QString possibleCharacters("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-
-    QString randomString;
-    for(int i = 0; i < length; i++)
-    {
-        int index = qrand() % possibleCharacters.length();
-        QChar nextChar = possibleCharacters.at(index);
-        randomString.append(nextChar);
-    }
-    return randomString;
-}
-
 namespace QtCreatorDiscordRichPresence {
     namespace Internal {
 
@@ -72,7 +59,7 @@ namespace QtCreatorDiscordRichPresence {
 
             //Connect to file editing signals
             connect(Core::EditorManager::instance(), &Core::EditorManager::currentEditorChanged, [=](Core::IEditor *editor) {
-                //qDebug() << editor->document()->filePath().fileName();
+
                 DiscordRichPresence presence;
                 memset(&presence, 0, sizeof(presence));
 
@@ -141,22 +128,8 @@ namespace QtCreatorDiscordRichPresence {
                     } else {
                         sprintf(stateString, "Editing");
                     }
-                    oldProject = "";
                 } else {
                     sprintf(stateString, "%s", current->displayName().prepend("Fighting with ").toUtf8().data());
-
-                    if (oldProject != current->displayName()) {
-                        oldProject = current->displayName();
-
-                        presence.partySize = 1;
-                        presence.partyMax = 100;
-
-                        char partyId[256];
-                        sprintf(partyId, "%s", getRandomAlphanumericString(128).toUtf8().data());
-                        presence.partyId = partyId;
-
-                        presence.joinSecret = "This is the Join secret";
-                    }
                 }
                 presence.state = stateString;
 

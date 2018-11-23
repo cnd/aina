@@ -28,6 +28,8 @@
 #include "buildstep.h"
 #include <coreplugin/ioutputpane.h>
 
+#include <utils/outputformatter.h>
+
 #include <QHash>
 #include <QPair>
 

@@ -41,9 +41,7 @@
 #include <extensionsystem/pluginmanager.h>
 #include <texteditor/texteditorsettings.h>
 #include <texteditor/fontsettings.h>
-#include <texteditor/behaviorsettings.h>
-#include <utils/algorithm.h>
-#include <utils/outputformatter.h>
+#include <texteditor/behaviorsettings.h>F
 #include <utils/proxyaction.h>
 #include <utils/theme/theme.h>
 #include <utils/utilsicons.h>

@@ -53,7 +53,7 @@ namespace QtCreatorDiscordRichPresence {
             presence.state = "Idle";
             presence.details = "Startup Screen";
             presence.largeImageKey = "logo3";
-            presence.largeImageText = "Sword Art Online";
+            presence.largeImageText = "near";
             presence.instance = 1;
             Discord_UpdatePresence(&presence);
 
@@ -112,10 +112,10 @@ namespace QtCreatorDiscordRichPresence {
 
                 if (smallImageKey != nullptr && smallImageKey[0] == '\0') {
                     presence.largeImageKey = "logo2";
-                    presence.largeImageText = "Sword Art Online";
+                    presence.largeImageText = "near";
                 } else {
                     presence.largeImageKey = "logo3";
-                    presence.largeImageText = "Sword Art Online";
+                    presence.largeImageText = "near";
                     presence.smallImageKey = smallImageKey;
                     presence.smallImageText = smallImageText;
                 }

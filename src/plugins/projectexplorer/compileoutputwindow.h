@@ -108,7 +108,6 @@ private:
     QToolButton *m_cancelBuildButton;
     QToolButton * const m_settingsButton;
     Utils::OutputFormatter *m_formatter;
-<<<<<<< HEAD
     CompileOutputSettings m_settings;
 };
 

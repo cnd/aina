@@ -108,6 +108,7 @@ private:
     QToolButton *m_cancelBuildButton;
     QToolButton * const m_settingsButton;
     Utils::OutputFormatter *m_formatter;
+    Utils::OutputFormat m_stdErrContext;
     CompileOutputSettings m_settings;
 };
 
@@ -125,7 +126,6 @@ private:
 
     class SettingsWidget;
     QPointer<SettingsWidget> m_widget;
-    Utils::OutputFormat m_stdErrContext;
 };
 
 } // namespace Internal

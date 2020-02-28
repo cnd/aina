@@ -22,9 +22,9 @@
 #include "minimapconstants.h"
 
 #include <coreplugin/icore.h>
+#include <coreplugin/dialogs/ioptionspage.h>
 #include <extensionsystem/pluginmanager.h>
 #include <texteditor/displaysettings.h>
-#include <texteditor/texteditoroptionspage.h>
 #include <texteditor/texteditorsettings.h>
 #include <utils/qtcassert.h>
 #include <utils/settingsutils.h>

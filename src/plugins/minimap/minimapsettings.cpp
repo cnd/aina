@@ -54,11 +54,11 @@ const char alphaKey[] = "Alpha";
 MinimapSettings* m_instance = 0;
 }
 
-class MinimapSettingsPage : public TextEditor::TextEditorOptionsPage
+class MinimapSettingsPage : public TextEditor::Core::IOptionsPage
 {
 public:
    MinimapSettingsPage(QObject* parent)
-   : TextEditor::TextEditorOptionsPage(parent)
+   : TextEditor::Core::IOptionsPage(parent)
    , m_widget(0)
    {
       setId(Constants::MINIMAP_SETTINGS);
